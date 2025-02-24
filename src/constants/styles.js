@@ -1,6 +1,8 @@
 export const COLORS = {
-  PRIMARY: "",
-  SECONDARY: "",
+  BLUE: "#0064ff",
+  GRAY: "#202632",
+  WHITE: "#fff",
+  RED: "#e63946",
 };
 
 export const BREAKPOINTS = {
