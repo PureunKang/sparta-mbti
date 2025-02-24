@@ -1,4 +1,3 @@
-// components/Register.js
 import { useState } from "react";
 import { Form, Input, Button } from "../components/common";
 import { COLORS } from "../constants/styles";
