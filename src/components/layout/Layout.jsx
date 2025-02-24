@@ -1,9 +1,22 @@
-import { Outlet, Link } from "react-router-dom";
+import { Outlet, Link, useNavigate } from "react-router-dom";
 import { PATHS } from "../../constants/paths";
 import { Button } from "../common";
 import { COLORS } from "../../constants/styles";
+import { useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
 
 const Layout = () => {
+  const { isAuthenticated, logout } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const onLogoutHandler = () => {
+    const confirmLogout = window.confirm("정말로 로그아웃 하시겠습니까?");
+    if (confirmLogout) {
+      logout();
+      navigate("/");
+    }
+  };
+
   return (
     <>
       <div className="flex flex-col min-h-screen">
@@ -13,9 +26,24 @@ const Layout = () => {
         >
           <div className="flex space-x-4">
             <Link to={PATHS.HOME}>홈</Link>
-            <Link to={PATHS.MYPAGE}>마이페이지</Link>
           </div>
-          <Button>로그아웃</Button>
+          {isAuthenticated ? (
+            <>
+              <div>
+                <Link to={PATHS.MYPAGE}>마이페이지</Link>
+                <Button onClick={onLogoutHandler}>로그아웃</Button>
+              </div>
+            </>
+          ) : (
+            <>
+              <div>
+                <Link to={PATHS.LOGIN}>로그인</Link>
+                <Link to={PATHS.REGISTER} className="ml-2">
+                  회원가입
+                </Link>
+              </div>
+            </>
+          )}
         </nav>
 
         <main className="flex-grow container mx-auto py-6">

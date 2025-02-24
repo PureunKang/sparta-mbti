@@ -1,17 +1,24 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { validateLogin } from "../validators/authValidator";
 import { Form, Input, Button } from "../components/common";
 import { COLORS } from "../constants/styles";
+import { PATHS } from "../constants/paths";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
+import { loginUser } from "../apis/api/user";
 
 const Login = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [errors, setErrors] = useState({});
 
+  const { login } = useContext(AuthContext);
+  const navigate = useNavigate();
+
   const onChangeHandler = (e) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const onSubmitHandler = (e) => {
+  const onSubmitHandler = async (e) => {
     e.preventDefault();
 
     const validationErrors = validateLogin(formData);
@@ -20,7 +27,23 @@ const Login = () => {
       return;
     }
 
-    console.log("로그인 요청", formData);
+    try {
+      const response = await loginUser({
+        id: formData.email,
+        password: formData.password,
+      });
+
+      if (response.success) {
+        localStorage.setItem("accessToken", response.accessToken);
+        login(response);
+        navigate(PATHS.HOME);
+      } else {
+        alert("로그인 실패", response.message);
+      }
+    } catch (error) {
+      console.error("로그인 에러", error);
+      alert("로그인 중 에러가 발생했습니다.");
+    }
   };
 
   return (
@@ -53,6 +76,16 @@ const Login = () => {
         >
           로그인
         </Button>
+        <div>
+          <span>계정이 없으신가요?</span>
+          <Link
+            to={PATHS.REGISTER}
+            style={{ color: COLORS.BLUE }}
+            className="ml-1"
+          >
+            회원가입 하러가기
+          </Link>
+        </div>
       </Form>
     </>
   );
