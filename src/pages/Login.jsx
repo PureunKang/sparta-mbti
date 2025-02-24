@@ -26,7 +26,7 @@ const Login = () => {
   return (
     <>
       <Form onSubmit={onSubmitHandler}>
-        <h1 className="text-center font-bold">로그인</h1>
+        <h1 className="text-center">로그인</h1>
         <Input
           type="email"
           name="email"
