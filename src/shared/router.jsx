@@ -4,6 +4,7 @@ import Login from "../pages/Login";
 import Register from "../pages/Register";
 import Mypage from "../pages/Mypage";
 import Test from "../pages/Test";
+import TestResult from "../pages/TestResult";
 import { createBrowserRouter } from "react-router-dom";
 import Layout from "../components/layout/Layout";
 import PrivateRoute from "./PrivateRoute";
@@ -43,6 +44,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <Test />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: PATHS.TEST_RESULTS,
+        element: (
+          <PrivateRoute>
+            <TestResult />
           </PrivateRoute>
         ),
       },

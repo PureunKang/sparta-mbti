@@ -4,4 +4,5 @@ export const PATHS = {
   REGISTER: "/register",
   MYPAGE: "/mypage",
   TEST: "/test",
+  TEST_RESULTS: "/test_results",
 };
