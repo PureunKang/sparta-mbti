@@ -6,13 +6,14 @@ import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 
 const Layout = () => {
-  const { isAuthenticated, logout } = useContext(AuthContext);
+  const { isAuthenticated, setIsAuthenticated } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const onLogoutHandler = () => {
     const confirmLogout = window.confirm("정말로 로그아웃 하시겠습니까?");
     if (confirmLogout) {
-      logout();
+      setIsAuthenticated(false);
+      localStorage.removeItem("userData");
       navigate("/");
     }
   };

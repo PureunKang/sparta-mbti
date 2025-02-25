@@ -11,7 +11,7 @@ const Login = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [errors, setErrors] = useState({});
 
-  const { login } = useContext(AuthContext);
+  const { setIsAuthenticated } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const onChangeHandler = (e) => {
@@ -34,8 +34,8 @@ const Login = () => {
       });
 
       if (response.success) {
-        localStorage.setItem("accessToken", response.accessToken);
-        login(response);
+        localStorage.setItem("userData", JSON.stringify(response));
+        setIsAuthenticated(true);
         navigate(PATHS.HOME);
       } else {
         alert("로그인 실패", response.message);

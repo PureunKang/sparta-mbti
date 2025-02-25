@@ -1,91 +1,40 @@
 {
   "testResults": [
     {
-      "id": "c3de",
+      "id": "0896",
       "mbti": "INFP",
-      "answers": [
-        {
-          "type": "E/I",
-          "answer": "도망간다"
-        },
-        {
-          "type": "S/N",
-          "answer": "바로 한 입 먹는다"
-        },
-        {
-          "type": "T/F",
-          "answer": "내 인생도 깨졌구나..."
-        },
-        {
-          "type": "J/P",
-          "answer": "무조건 새로운 걸 시킨다"
-        },
-        {
-          "type": "E/I",
-          "answer": "저거 터지면 난 죽는다"
-        },
-        {
-          "type": "S/N",
-          "answer": "이름 특이한 걸 고른다"
-        },
-        {
-          "type": "T/F",
-          "answer": "더 웃기게 만들어서 말한다"
-        },
-        {
-          "type": "J/P",
-          "answer": "다음엔 내 물건이겠군..."
-        },
-        {
-          "type": "E/I",
-          "answer": "분노하며 우산을 산다"
-        },
-        {
-          "type": "S/N",
-          "answer": "영화 끝날 때까지 남겨둔다"
-        },
-        {
-          "type": "T/F",
-          "answer": "주변 사람들과 함께 웃는다"
-        },
-        {
-          "type": "J/P",
-          "answer": "뛰면서 기사님을 부른다"
-        },
-        {
-          "type": "E/I",
-          "answer": "고양이에게 말을 건다"
-        },
-        {
-          "type": "S/N",
-          "answer": "구석에서 눈치 본다"
-        },
-        {
-          "type": "T/F",
-          "answer": "내가 시켰어야 했다고 한탄한다"
-        },
-        {
-          "type": "E/I",
-          "answer": "아는 척하지 않는다"
-        },
-        {
-          "type": "S/N",
-          "answer": "비상벨을 눌러본다"
-        },
-        {
-          "type": "T/F",
-          "answer": "무서워서 집으로 뛴다"
-        },
-        {
-          "type": "S/N",
-          "answer": "이름을 다시 말해준다"
-        },
-        {
-          "type": "J/P",
-          "answer": "한 개만 가져간다"
-        }
-      ],
-      "createdAt": "2025-02-24T17:53:01.871Z"
+      "userId": "pureun0000@gmail.com",
+      "createdAt": "2025-02-25T04:55:38.802Z"
+    },
+    {
+      "id": "24cb",
+      "mbti": "INFP",
+      "userId": "pureun0000@gmail.com",
+      "createdAt": "2025-02-25T05:16:16.484Z"
+    },
+    {
+      "id": "8e60",
+      "mbti": "INFP",
+      "userId": "pureun0000@gmail.com",
+      "createdAt": "2025-02-25T05:20:23.398Z"
+    },
+    {
+      "id": "e19d",
+      "mbti": "INFP",
+      "userId": "pureun0000@gmail.com",
+      "createdAt": "2025-02-25T05:22:40.981Z"
+    },
+    {
+      "id": "b765",
+      "mbti": "INFP",
+      "userId": "pureun0000@gmail.com",
+      "createdAt": "2025-02-25T05:23:16.514Z"
+    },
+    {
+      "id": "03e8",
+      "mbti": "INFP",
+      "userId": "pureun0000@gmail.com",
+      "createdAt": "2025-02-25T05:27:10.028Z"
     }
   ]
 }

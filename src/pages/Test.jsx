@@ -1,31 +1,30 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import TestForm from "../components/TestForm";
 import { calculateMBTI, mbtiDescriptions } from "../apis/utils/mbtiCalculator";
 import { createTestResult } from "../apis/api/testResults";
 import { useNavigate } from "react-router-dom";
 import { PATHS } from "../constants/paths";
+import { AuthContext } from "../context/AuthContext";
 
-const Test = ({ user }) => {
+const Test = () => {
   const navigate = useNavigate();
   const [result, setResult] = useState(null);
+  const { user, setUser } = useContext(AuthContext);
 
+  const localData = JSON.parse(localStorage.getItem("userData"));
+  const userId = localData.userId;
   const handleTestSubmit = async (answers) => {
     try {
       const mbtiResult = calculateMBTI(answers);
       /* Test 결과는 mbtiResult 라는 변수에 저장이 됩니다. 이 데이터를 어떻게 API 를 이용해 처리 할 지 고민해주세요. */
       const resultData = {
         mbti: mbtiResult,
-        userId: user.id,
-        answers,
+        userId,
         createdAt: new Date().toISOString(),
       };
 
-      const response = await createTestResult(resultData);
-      if (response.success) {
-        setResult(mbtiResult);
-      } else {
-        alert("테스트 결과 저장 실패");
-      }
+      await createTestResult(resultData);
+      setResult(resultData);
     } catch (error) {
       console.error("테스트 결과 저장 에러", error);
       alert("오류 발생");
@@ -49,11 +48,10 @@ const Test = ({ user }) => {
         ) : (
           <>
             <h1 className="text-3xl font-bold text-primary-color mb-6">
-              테스트 결과: {result}
+              테스트 결과: {result.mbti}
             </h1>
             <p className="text-lg text-gray-700 mb-6">
-              {mbtiDescriptions[result] ||
-                "해당 성격 유형에 대한 설명이 없습니다."}
+              {mbtiDescriptions[result.mbti]}
             </p>
             <button
               onClick={handleNavigateToResults}

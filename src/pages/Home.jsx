@@ -6,7 +6,9 @@ import { PATHS } from "../constants/paths";
 const Home = () => {
   const navigate = useNavigate();
   const onClickHandler = () => {
-    const token = localStorage.getItem("accessToken");
+    const data = JSON.parse(localStorage.getItem("userData"));
+    const token = data.accessToken;
+
     if (!token) {
       alert("로그인이 필요합니다.");
       navigate(PATHS.LOGIN);

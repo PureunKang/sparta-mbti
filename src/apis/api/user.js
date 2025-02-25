@@ -5,15 +5,12 @@ import { REGISTER_PATH } from "../../constants/auth";
 import { GET_USER_PATH } from "../../constants/auth";
 import { PROFILE_UPDATE_PATH } from "../../constants/auth";
 
-export const loginUser = async ({ id, password, expiresIn = "10m" }) => {
+export const loginUser = async ({ id, password }) => {
   try {
-    const response = await instance.post(
-      `${LOGIN_PATH}?expiresIn=${expiresIn}`,
-      {
-        id,
-        password,
-      }
-    );
+    const response = await instance.post(`${LOGIN_PATH}`, {
+      id,
+      password,
+    });
     return response.data;
   } catch (error) {
     console.error("로그인 에러", error);
@@ -49,13 +46,13 @@ export const getUserProfile = async (token) => {
   }
 };
 
-export const updateProfile = async (formData) => {
-  const token = localStorage.getItem("accessToken");
+export const updateProfile = async (data) => {
+  const localData = JSON.parse(localStorage.getItem("userData"));
+  const token = localData.accessToken;
 
   try {
-    const response = await instance.patch(PROFILE_UPDATE_PATH, formData, {
+    const response = await instance.patch(PROFILE_UPDATE_PATH, data, {
       headers: {
-        "Content-Type": "multipart/form-data", // 실제 요청 시 반드시 지정
         Authorization: `Bearer ${token}`,
       },
     });

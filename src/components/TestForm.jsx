@@ -43,8 +43,8 @@ const TestForm = ({ onSubmit }) => {
   return (
     <div className="space-y-6 p-6 bg-white rounded-lg">
       <div className="mb-4">
-        <h2 className="text-xl font-bold">
-          총 {questions.length}문항 | 소요시간 3분 내외
+        <h2 className="text-xl font-bold text-gray-600">
+          총 {questions.length}문항
         </h2>
         <p className="text-gray-600">이 테스트는 약 3분 정도 소요됩니다.</p>
       </div>
@@ -110,7 +110,7 @@ const TestForm = ({ onSubmit }) => {
           <div className="bg-white p-6 rounded-lg max-w-md w-full">
             <h2 className="text-xl font-bold mb-4">테스트 결과</h2>
             <pre className="text-sm text-gray-700 max-h-60 overflow-y-auto">
-              {JSON.stringify(answers, null, 2)}
+              {""}
             </pre>
             <Button
               type="button"
